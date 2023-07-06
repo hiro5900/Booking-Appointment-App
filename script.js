@@ -65,6 +65,9 @@ const showOutput = (userData) => {
      deleteBtn.addEventListener("click", () => {
           users.removeChild(user);
           localStorage.removeItem(userData.Email);
+          axios.delete(`https://crudcrud.com/api/9bb4bead3fc545949899f4bac9571d76/appointmentData/${userData._id}`)
+               .then((response) => console.log(response))
+               .catch((error) => console.log(error))
      });
 
      // Edit function
@@ -79,7 +82,7 @@ const showOutput = (userData) => {
 };
 
 // Function to handle form submission
-const handleFormSubmit = (event) => {
+const handleFormSubmit = () => {
 
      let userName = document.getElementsByClassName("user-name")[0].value.trim();
      let userEmail = document.getElementsByClassName("user-email")[0].value;
