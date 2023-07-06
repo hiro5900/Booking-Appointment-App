@@ -13,7 +13,7 @@ const saveUserData = (userName, userEmail, userPhone) => {
 
      // POST request to cloud
      axios
-          .post("https://crudcrud.com/api/9bb4bead3fc545949899f4bac9571d76/appointmentData", info)
+          .post("https://crudcrud.com/api/d426ee9618ac40cbb68255aeaaa51c90/appointmentData", info)
           .then((response) => {
                console.log(response);
           })
@@ -25,7 +25,7 @@ const saveUserData = (userName, userEmail, userPhone) => {
 // Function to retrieve user data from the server
 const retrieveUserData = () => {
      axios
-          .get("https://crudcrud.com/api/9bb4bead3fc545949899f4bac9571d76/appointmentData")
+          .get("https://crudcrud.com/api/d426ee9618ac40cbb68255aeaaa51c90/appointmentData")
           .then((response) => {
                console.log(response);
                for (let i = 0; i < response.data.length; i++) {
@@ -65,7 +65,7 @@ const showOutput = (userData) => {
      deleteBtn.addEventListener("click", () => {
           users.removeChild(user);
           localStorage.removeItem(userData.Email);
-          axios.delete(`https://crudcrud.com/api/9bb4bead3fc545949899f4bac9571d76/appointmentData/${userData._id}`)
+          axios.delete(`https://crudcrud.com/api/d426ee9618ac40cbb68255aeaaa51c90/appointmentData/${userData._id}`)
                .then((response) => console.log(response))
                .catch((error) => console.log(error))
      });
@@ -78,6 +78,27 @@ const showOutput = (userData) => {
           document.getElementsByClassName("user-name")[0].value = userData.Name;
           document.getElementsByClassName("user-email")[0].value = userData.Email;
           document.getElementsByClassName("user-phone")[0].value = userData.Phone;
+
+          const submitButton = document.getElementById('btn')
+          submitButton.removeEventListener('click', handleFormSubmit)
+
+
+          const handleEditSubmit = () => {
+               const updatedDetails = {
+                    Name: document.getElementsByClassName("user-name")[0].value.trim(),
+                    Email: document.getElementsByClassName("user-email")[0].value,
+                    Phone: document.getElementsByClassName("user-phone")[0].value
+               }
+
+               axios.put(`https://crudcrud.com/api/d426ee9618ac40cbb68255aeaaa51c90/appointmentData/${userData._id}`, updatedDetails)
+                    .then((response) => {
+                         console.log(response)
+                         retrieveUserData()
+                    })
+                    .catch((error) => console.log(error))
+          }
+
+          submitButton.addEventListener('click', handleEditSubmit)
      });
 };
 
