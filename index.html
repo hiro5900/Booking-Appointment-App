@@ -10,22 +10,30 @@
 </head>
 
 <body>
+     <div class="background-image"></div>
+
+
      <div class="container">
-          <h2>Add User</h2>
-          <form>
-               <label for="name">Name:</label><br>
-               <input type="text" name="name" placeholder="Your Name" class="text-field user-name"><br>
-               <label for="email">Email:</label><br>
-               <input type="email" name="email" placeholder="Your Email" class="text-field user-email"><br>
-               <label for="name">Phone:</label><br>
-               <input type="text" name="phone" placeholder="Your Phone" class="text-field user-phone"><br>
-          </form><br>
-          <button id="btn">Submit</button>
-     </div><br>
-     <div class="user-list">
-          <ul class="users">
-          </ul>
+          <div class="form-container">
+               <h2>Add User</h2>
+               <form>
+                    <label for="name">Name:</label><br>
+                    <input type="text" name="name" placeholder="Your Name" class="text-field user-name"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" name="email" placeholder="Your Email" class="text-field user-email"><br>
+                    <label for="name">Phone:</label><br>
+                    <input type="text" name="phone" placeholder="Your Phone" class="text-field user-phone"><br>
+               </form><br>
+               <button id="btn">Submit</button>
+          </div>
+
+
+          <div class="user-list">
+               <ul class="users">
+               </ul>
+          </div>
      </div>
+
 
      <script src="script.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
