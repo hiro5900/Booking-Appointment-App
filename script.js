@@ -98,7 +98,7 @@ const showOutput = (userData) => {
                     .catch((error) => console.log(error))
           }
 
-          submitButton.addEventListener('click', handleEditSubmit)
+          submitButton.addEventListener('click', handleFormSubmit)
      });
 };
 
